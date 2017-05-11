@@ -1,1 +1,2 @@
 # MailDialog
+mvn clean install
