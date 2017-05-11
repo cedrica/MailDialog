@@ -1,0 +1,54 @@
+package basic.textfield
+
+import javafx.scene.layout.BorderPane
+import javafx.scene.control.Label
+import java.lang.Double
+import javafx.scene.layout.HBox
+import javafx.scene.control.TextField
+import org.controlsfx.glyphfont.Glyph
+import javafx.scene.layout.VBox
+import javafx.scene.control.Separator
+import javafx.scene.control.Button
+import javafx.geometry.Insets
+import basic.textfield.BasicTextFieldView
+import basic.textfield.BasicTextfieldController
+
+dynamic component ExampleView controlledby BasicTextfieldController styledwith [ "/css/Material.css",
+	"/basic/textfield/BasicTextFieldView.css" ] {
+	BasicTextFieldView id rootNode {
+		styleClass : [
+			"example-view"
+		],
+		stylesheets : [
+			"/basic/textfield/BasicTextFieldView.css"
+		],
+		prefWidth : 500,
+		prefHeight : 100,
+		top : HBox {
+			alignment : "CENTER",
+			styleClass : [
+				"header"
+			],
+			Label {
+				text : "Hello "
+			},
+			Label id lblUserName {
+				text : "Hans"
+			}
+		},
+		center : HBox {
+			spacing : 10,
+			alignment : "CENTER",
+			Label {
+				styleClass : [
+					"userName"
+				],
+				text : "Please enter your name:"
+			},
+			TextField id txfUserName {
+				text : "Human",
+				promptText : "Max Power"
+			}
+		}
+	}
+}

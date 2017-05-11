@@ -1,0 +1,14 @@
+.example-view {
+}
+
+.example-view .header {
+	-fx-font-size: 20;
+	-fx-font-weight: bold;
+}
+
+.example-view .userName {
+	-fx-font-size: 14;
+	-fx-font-style: italic;
+	-fx-text-fill: green;
+}
+

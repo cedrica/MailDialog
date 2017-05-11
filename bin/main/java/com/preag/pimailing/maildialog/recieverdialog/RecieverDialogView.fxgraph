@@ -1,0 +1,42 @@
+package com.preag.pimailing.maildialog.recieverdialog
+
+import javafx.scene.layout.VBox
+import javafx.scene.control.TextField
+import javafx.scene.control.TableView
+import javafx.scene.layout.HBox
+import javafx.scene.control.Button
+import com.preag.pimailing.maildialog.recieverdialog.RecieverDialogController
+
+component RecieverDialogView controlledby RecieverDialogController styledwith["/com/preag/pimailing/maildialog/recieverdialog/RecieverDialogView.css"]{
+	VBox {
+		stylesheets : ["/com/preag/pimailing/maildialog/recieverdialog/RecieverDialogView.css"],
+		styleClass : ["to-dialog-view"],
+		spacing : 5,
+		TextField{
+			promptText : "Suchen..."
+		},
+		TableView{
+			static vgrow : "ALWAYS"
+		},
+		HBox{
+			spacing : 5,
+			Button{
+				text : "An ->"
+			},
+			TextField{
+				static hgrow : "ALWAYS"
+				
+			}
+		},
+		HBox{
+			alignment : "CENTER_RIGHT",
+			spacing : 10,
+			Button{
+				text : "OK"
+			},
+			Button{
+				text : "Abbrechen"
+			}
+		}
+	}
+}

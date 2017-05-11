@@ -1,0 +1,146 @@
+package advanced.combobox
+
+import javafx.scene.layout.BorderPane
+import advanced.combobox.AdvancedComboboxView
+import advanced.combobox.AdvancedComboboxController
+import javafx.scene.layout.HBox
+import javafx.scene.control.Label
+import javafx.scene.control.ComboBox
+import javafx.geometry.Insets
+import javafx.scene.layout.GridPane
+import javafx.scene.layout.ColumnConstraints
+import javafx.scene.image.ImageView
+import javafx.scene.image.Image
+import org.controlsfx.glyphfont.Glyph
+
+dynamic component ExampleComboboxView controlledby AdvancedComboboxController styledwith [ "/css/Material.css",
+	"/advanced/combobox/AdvancedComboboxView.css" ] {
+	AdvancedComboboxView id rootNode {
+		styleClass : [
+			"example-combobox-view"
+		],
+		stylesheets : [
+			"/advanced/combobox/AdvancedComboboxView.css"
+		],
+		top : HBox {
+			alignment : "CENTER",
+			styleClass : [
+				"header"
+			],
+			Label {
+				text : "Selected Name: "
+			},
+			Label id lblSelectedCharacter {
+				styleClass : [
+					"selectedCharacter"
+				]
+			}
+		},
+		center : HBox {
+			padding : Insets {
+				top : 20,
+				left : 20
+			},
+			spacing : 10,
+			alignment : "CENTER",
+			Label {
+				styleClass : [
+					"selectionText"
+				],
+				graphic : Glyph {
+					fontFamily : "FontAwesome",
+					icon : "USER"
+				},
+				text : "Please select your character!"
+			},
+			ComboBox id cmbCharacterSelection {
+				minWidth : 100,
+				onAction : controllermethod onSelectNewCharacter
+			},
+			ImageView id imvwCharacter {
+
+			}
+		},
+		bottom : HBox {
+			spacing : 10,
+			padding : Insets {
+				top : 20,
+				right : 20,
+				left : 20,
+				bottom : 20
+			},
+			HBox {
+				alignment : "CENTER_LEFT",
+				spacing : 5,
+				ImageView {
+					fitHeight : 24,
+					fitWidth : 24,
+					image : Image {
+						url : location "/images/attributes/HP.png"
+					}
+				},
+				Label {
+					text : "Hitpoints: "
+				},
+				Label id lblHitpoints {
+					minWidth : 50,
+					text : "100"
+				}
+			},
+			HBox {
+				alignment : "CENTER_LEFT",
+				spacing : 5,
+				ImageView {
+					fitHeight : 24,
+					fitWidth : 24,
+					image : Image {
+						url : location "/images/attributes/Mana.png"
+					}
+				},
+				Label {
+					text : "Mana: "
+				},
+				Label id lblMana {
+					minWidth : 50,
+					text : "100"
+				}
+			},
+			HBox {
+				alignment : "CENTER_LEFT",
+				spacing : 5,
+				ImageView {
+					fitHeight : 24,
+					fitWidth : 24,
+					image : Image {
+						url : location "/images/attributes/DEF.png"
+					}
+				},
+				Label {
+					text : "Defence: "
+				},
+				Label id lblDefence {
+					minWidth : 50,
+					text : "100"
+				}
+			},
+			HBox {
+				alignment : "CENTER_LEFT",
+				spacing : 5,
+				ImageView {
+					fitHeight : 24,
+					fitWidth : 24,
+					image : Image {
+						url : location "/images/attributes/ATK.png"
+					}
+				},
+				Label {
+					text : "Attack: "
+				},
+				Label id lblAttack {
+					minWidth : 50,
+					text : "100"
+				}
+			}
+		}
+	}
+}

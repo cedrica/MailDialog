@@ -1,0 +1,48 @@
+package basic.list
+
+import javafx.scene.layout.BorderPane
+import basic.list.BasicListController
+import basic.list.BasicListView
+import javafx.scene.control.ListView
+import javafx.scene.layout.HBox
+import javafx.scene.control.Label
+import javafx.geometry.Insets
+
+dynamic component BasicListView controlledby BasicListController styledwith [ "/css/Material.css",
+	"/basic/list/BasicListView.css" ] {
+	BasicListView id rootNode {
+		styleClass : [
+			"basic-list-view"
+		],
+		stylesheets : [
+			"/basic/list/BasicListView.css"
+		],
+		padding : Insets{
+			top : 20,
+			left : 20,
+			right : 20,
+			bottom : 20
+		},
+		top : HBox{
+			styleClass : ["header"],
+			alignment : "CENTER",
+			Label{
+				text : "All Characternames"
+			}
+		},
+		center : ListView id lvNameList{
+			
+		},
+		bottom : HBox{
+			spacing : 5,
+			alignment : "CENTER",
+			Label{
+				styleClass : ["amountOfNamesText"],
+				text : "Total amount of names: "
+			},
+			Label id lblAmountOfNames{
+				styleClass : ["amountOfNames"]
+			}
+		}
+	}
+}

@@ -1,0 +1,79 @@
+package todo.main.container
+
+import javafx.scene.layout.BorderPane
+import todo.main.container.MainContainerController
+import todo.main.container.MainContainerView
+import javafx.scene.layout.HBox
+import javafx.scene.control.Button
+import org.controlsfx.glyphfont.Glyph
+import javafx.geometry.Insets
+import javafx.scene.layout.VBox
+import javafx.scene.control.Separator
+
+dynamic component MainContainerView controlledby MainContainerController styledwith [ "/css/Material.css",
+	"/todo/main/container/MainContainerView.css" ] {
+	MainContainerView id rootNode {
+		styleClass : [
+			"main-container-view"
+		],
+		stylesheets : [
+			"/todo/main/container/MainContainerView.css"
+		],
+		top : BorderPane {
+			right : HBox {
+				padding : Insets {
+					top : 5,
+					left : 5,
+					right : 5,
+					bottom : 5
+				},
+				Button {
+					styleClass : [
+						"card"
+					],
+					graphic : Glyph {
+						fontFamily : "FontAwesome",
+						icon : "COG"
+					},
+					onAction : controllermethod onSettings
+				}
+			},
+			center : bind rootNode#headerContentNode,
+			bottom : Separator {
+				maxHeight : 30
+			}
+		},
+		center : VBox {
+			padding : Insets {
+				top : 10,
+				bottom : 10,
+				left : 10,
+				right : 10
+			},
+			HBox id hbxCenter {
+				style : "-fx-background-color: GHOSTWHITE",
+				static vgrow : "ALWAYS",
+				spacing : 20,
+				alignment : "CENTER"
+			}
+		},
+		left : VBox {
+			padding : Insets {
+				top : 10,
+				bottom : 10
+			},
+			VBox id vbxNavigation{
+				minWidth : 32,
+				style : "-fx-background-color: WHITESMOKE",
+				static vgrow : "ALWAYS",
+				alignment : "TOP_CENTER"
+			}
+		},
+		bottom : BorderPane {
+			top : Separator {
+				minHeight : 30
+			},
+			center : bind rootNode#bottomContentNode
+		}
+	}
+}

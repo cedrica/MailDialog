@@ -1,0 +1,241 @@
+package com.preag.pimailing.maildialog
+
+import javafx.scene.layout.VBox
+import javafx.scene.layout.BorderPane
+import javafx.scene.layout.HBox
+import javafx.scene.control.Label
+import javafx.scene.control.ComboBox
+import javafx.scene.control.Button
+import javafx.scene.control.TextField
+import org.controlsfx.glyphfont.Glyph
+import java.lang.Double
+import org.controlsfx.control.ToggleSwitch
+import com.preag.core.ui.advancedhtmleditor.AdvancedHtmlEditor
+import javafx.geometry.Insets
+import com.preag.pimailing.maildialog.MailDialogController
+import javafx.scene.text.Font
+import com.preag.pimailing.maildialog.MailDialogView
+
+dynamic component MailDialogView controlledby MailDialogController styledwith [ "/com/preag/pimailing/maildialog/MailDialogView.css" ] {
+	BorderPane  {
+		maxWidth : const Double#MAX_VALUE,
+		stylesheets : [
+			"/com/preag/pimailing/maildialog/MailDialogView.css"
+		],
+		styleClass : [
+			"mail-dialog-view"
+		],
+		top : HBox {
+			spacing : 30,
+			VBox {
+				styleClass : [
+					"send-image"
+				],
+				VBox {
+					alignment : "CENTER",
+					Label {
+	
+						prefHeight : 150,
+						graphic : Glyph {
+							font : Font{
+								name : "size",
+								size : 300
+							},
+							icon : "PAPER_PLANE",
+							fontFamily : "FontAwesome"
+						}
+					},
+					Label {
+						text : "SENDEN"
+					}
+				},
+				onMouseClicked : controllermethod onSendEmail
+			},
+			VBox {
+				static hgrow : "ALWAYS",
+				spacing : 5,
+				HBox {
+					spacing : 5,
+					Label {
+						styleClass : [
+							"title"
+						],
+						text : "Von:"
+					},
+					ComboBox {
+						static hgrow : "ALWAYS",
+						maxWidth : const Double#MAX_VALUE,
+						promptText : "E-Mail auswählen"
+					},
+					Label {
+						styleClass : [
+							"space-helper"
+						]
+					},
+					Label {
+						styleClass : [
+							"space-helper"
+						]
+					}
+				},
+				HBox {
+					spacing : 5,
+					Button {
+						styleClass : [
+							"title"
+						],
+						text : "An...",
+						onAction : controllermethod onShowRecieverDialog
+					},
+					TextField {
+						static hgrow : "ALWAYS",
+						maxWidth : const Double#MAX_VALUE,
+						disable : true
+					},
+					Label {
+						styleClass : [
+							"space-helper"
+						]
+					},
+					Label {
+						styleClass : [
+							"space-helper"
+						]
+					}
+				},
+				HBox {
+					spacing : 5,
+					Label {
+						styleClass : [
+							"title"
+						],
+						text : "Betreff:"
+					},
+					TextField {
+						static hgrow : "ALWAYS",
+						maxWidth : const Double#MAX_VALUE
+					},
+					Label {
+						styleClass : [
+							"space-helper"
+						]
+					},
+					Label {
+						styleClass : [
+							"space-helper"
+						]
+					}
+				},
+				HBox {
+					static vgrow : "ALWAYS",
+					spacing : 5,
+					Label {
+						styleClass : [
+							"title"
+						],
+						text : "Anhänge:"
+					},
+					HBox {
+						static hgrow : "ALWAYS",
+						TextField {
+							static hgrow : "ALWAYS"
+						}
+					},
+					HBox {
+						spacing : 5,
+						Label {
+							styleClass : [
+								"space-helper"
+							],
+							graphic : Glyph {
+								icon : "PAPERCLIP",
+								fontSize : 100,
+								fontFamily : "FontAwesome"
+							}
+						},
+						Label {
+							styleClass : [
+								"space-helper"
+							],
+							text : "X"
+						}
+					}
+
+				},
+				HBox {
+					static vgrow : "ALWAYS",
+					Label {
+						styleClass : [
+							"title"
+						]
+					},
+					HBox {
+						static hgrow : "ALWAYS",
+						HBox {
+							static hgrow : "ALWAYS",
+							alignment : "TOP_LEFT",
+							Label {
+								text : "Persönliche Anrede"
+							},
+							ToggleSwitch {
+
+							}
+						},
+						VBox {
+							static hgrow : "ALWAYS",
+							alignment : "TOP_RIGHT",
+							ComboBox {
+								promptText : "Vorlage auswählen"
+							}
+						}
+					},
+					Label {
+						styleClass : [
+							"space-helper"
+						]
+					},
+					Label {
+						styleClass : [
+							"space-helper"
+						]
+					}
+
+				}
+
+			}
+		},
+		center : HBox {
+			padding : Insets {
+				top : 20
+			},
+			AdvancedHtmlEditor {
+				static hgrow : "ALWAYS"
+			}
+		},
+		bottom : HBox {
+			padding : Insets {
+				top : 20
+			},
+			ComboBox{
+				promptText : "Signature auswählen"
+			},
+			HBox{
+				static hgrow : "ALWAYS",
+				spacing : 5,
+				alignment :"CENTER_RIGHT",
+				Button{
+					style : "-fx-background-color:transparent",
+					graphic : Glyph{
+						icon : "SAVE",
+						fontFamily : "FontAwesome"
+					},
+					onAction : controllermethod onSaveAsTemplate
+				},
+				Label{
+					text : "als Vorlage speichern"
+				}
+			}
+		}
+	}
+
+}

@@ -1,0 +1,33 @@
+package basic.datepicker
+
+import javafx.scene.layout.BorderPane
+import basic.datepicker.BasicDatePickerController
+import basic.datepicker.BasicDatePickerView
+import javafx.scene.layout.HBox
+import javafx.geometry.Insets
+import javafx.scene.control.DatePicker
+import javafx.scene.control.Label
+
+dynamic component BasicDatePickerView controlledby BasicDatePickerController styledwith [ "/css/Material.css",
+	"/basic/datepicker/BasicDatePickerView.css" ] {
+	BasicDatePickerView id rootNode{
+		styleClass : [
+			"basic-datepicker-view"
+		],
+		stylesheets : [
+			"/basic/datepicker/BasicDatePickerView.css"
+		],
+		prefWidth : 400,
+		prefHeight : 100,
+		center : HBox {
+			alignment : "CENTER",
+			Label{
+				styleClass : ["selectionText"],
+				text : "Please select your birthday: "
+			},
+			DatePicker id dpkBirthday{
+				onAction : controllermethod onBirthdaySelect
+			}
+		}
+	}
+}

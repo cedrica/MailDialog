@@ -1,0 +1,61 @@
+package basic.checkbox
+
+import javafx.scene.layout.BorderPane
+import basic.checkbox.BasicCheckboxView
+import basic.checkbox.BasicCheckboxController
+import javafx.scene.layout.HBox
+import javafx.geometry.Insets
+import javafx.scene.control.CheckBox
+import javafx.scene.layout.VBox
+import javafx.scene.control.Label
+
+dynamic component BasicCheckboxView controlledby BasicCheckboxController styledwith [ "/css/Material.css/",
+	"/basic/checkbox/BasicCheckboxView.css" ] {
+	BasicCheckboxView id rootNode {
+		styleClass : [
+			"basic-checkbox-view"
+		],
+		stylesheets : [
+			"/basic/checkbox/BasicCheckboxView.css"
+		],
+		center : VBox {
+			alignment : "CENTER_LEFT",
+			padding : Insets {
+				top : 50,
+				bottom : 50,
+				left : 50,
+				right : 50
+			},
+			CheckBox id chkbName {
+				styleClass : [
+					"checkbox"
+				],
+				text : "Disable the name"
+			},
+			CheckBox id chkbProfession {
+				styleClass : [
+					"checkbox"
+				],
+				text : "Hide the profession"
+			},
+			HBox {
+				styleClass : [
+					"sentence"
+				],
+				padding : Insets {
+					top : 20,
+					left : 10
+				},
+				Label {
+					text : "This Story is about "
+				},
+				Label id lblProfession {
+					text : "a plumber called "
+				},
+				Label id lblName {
+					text : "Mario"
+				}
+			}
+		}
+	}
+}

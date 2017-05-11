@@ -1,0 +1,17 @@
+package basic.componentskeleton
+
+import javafx.scene.layout.BorderPane
+import basic.componentskeleton.EmptyExampleView
+import basic.componentskeleton.EmptyExampleController
+
+dynamic component ExampleView controlledby EmptyExampleController styledwith [ "/css/Material.css",
+	"/basic/componentskeleton/EmptyExampleView.css" ] {
+	EmptyExampleView id rootNode {
+		styleClass : [
+			"empty-example-view"
+		],
+		stylesheets : [
+			"/basic/componentskeleton/EmptyExampleView.css"
+		]
+	}
+}

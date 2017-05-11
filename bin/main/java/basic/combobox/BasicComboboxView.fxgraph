@@ -1,0 +1,36 @@
+package basic.combobox
+
+import javafx.scene.layout.BorderPane
+import basic.combobox.BasicComboboxController
+import basic.combobox.BasicComboboxView
+import javafx.scene.control.ComboBox
+import javafx.scene.layout.HBox
+import javafx.scene.control.Label
+import javafx.geometry.Insets
+
+dynamic component BasicComboboxView controlledby BasicComboboxController styledwith [ "/css/Material.css",
+	"/basic/combobox/BasicComboboxView.css" ] {
+	BasicComboboxView id rootNode {
+		styleClass : [
+			"basic-combobox-view"
+		],
+		stylesheets : [
+			"/basic/combobox/BasicComboboxView.css"
+		],
+		center : HBox{
+			padding : Insets{
+				top : 20,
+				bottom : 20,
+				left : 20,
+				right : 20
+			},
+			spacing : 10,
+			alignment : "CENTER",
+			Label{
+				styleClass : ["selectionText"],
+				text : "Please select a name: "
+			},
+			ComboBox id cmbName
+		}
+	}
+}

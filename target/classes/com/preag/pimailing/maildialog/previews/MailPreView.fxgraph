@@ -1,0 +1,100 @@
+package com.preag.pimailing.maildialog.previews
+
+import javafx.scene.layout.VBox
+import javafx.scene.control.Label
+import javafx.scene.layout.HBox
+import javafx.scene.layout.FlowPane
+import com.preag.pimailing.maildialog.previews.MailPreView
+import com.preag.pimailing.maildialog.previews.MailPreViewController
+import javafx.geometry.Insets
+import javafx.scene.web.WebView
+import javafx.scene.control.Separator
+import java.lang.Double
+import javafx.scene.control.Button
+
+dynamic component MailPreView controlledby MailPreViewController styledwith [
+	"/com/preag/pimailing/maildialog/previews/MailPreView.css" ] {
+	MailPreView id mailPreView {
+		stylesheets : [
+			"/com/preag/pimailing/maildialog/previews/MailPreView.css"
+		],
+		styleClass : [
+			"mail-pre-view"
+		],
+		padding : Insets {
+			bottom : 10,
+			left : 10,
+			right : 10,
+			top : 10
+		},
+		spacing : 10,
+		HBox {
+			alignment : "CENTER",
+			Label {
+				styleClass : [
+				"preview"
+			],
+				text : "PREVIEW"
+			}
+		},
+		Separator{
+			orientation : "HORIZONTAL"
+		},
+		Label id lblSubject {
+			styleClass : [
+				"subject"
+			],
+			text : "Subject"
+		},
+		Label id lblTransmitter {
+			styleClass : [
+				"tilte"
+			],
+			text : "Vorname, Nachname"
+		},
+		HBox {
+			Label {
+				styleClass : [
+					"tilte"
+				],
+				text : "Gesendet:"
+			},
+			Label id lblTransmitDate {
+				text : ""
+			}
+		},
+		HBox {
+			spacing : 5,
+			Label {
+				static hgrow : "ALWAYS",
+				styleClass : [
+					"title"
+				],
+				text : "An:"
+			},
+			FlowPane id fpRecievers {
+				static hgrow : "ALWAYS",
+				hgap : 5
+			}
+		},
+		HBox {
+			spacing : 5,
+			Label {
+				styleClass : [
+					"title"
+				],
+				text : "Anhänge"
+			},
+			FlowPane id fpAttachments {
+				static hgrow : "ALWAYS",
+				hgap : 5
+			}
+		},
+		Label id lblPersonalAddress {
+			text : "Sehr geehrte Damen und Herren;"
+		},
+		WebView id aheBody {
+			static vgrow : "ALWAYS"
+		}
+	}
+}

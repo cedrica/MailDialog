@@ -1,0 +1,56 @@
+package advanced.table
+
+import javafx.scene.layout.BorderPane
+import advanced.table.AdvancedTableController
+import advanced.table.AdvancedTableView
+import javafx.scene.control.TableView
+import javafx.scene.control.TableColumn
+import javafx.geometry.Insets
+
+dynamic component AdvancedTableView controlledby AdvancedTableController styledwith [ "/css/Material.css",
+	"/advanced/table/AdvancedTableView.css" ] {
+	AdvancedTableView id rootNode {
+		stylesheets : [
+			"/advanced/table/AdvancedTableView.css"
+		],
+		styleClass : [
+			"advanced-table-view"
+		],
+		padding : Insets {
+			top : 20,
+			left : 20,
+			right : 20,
+			bottom : 20
+		},
+		center : TableView id tbvCharacterTable {
+			editable : true,
+			columnResizePolicy : const TableView#CONSTRAINED_RESIZE_POLICY,
+			columns : [
+				TableColumn id tbcCharacterImage {
+					style : "-fx-alignment: CENTER",
+					text : "Image"
+				},
+				TableColumn id tbcCharacterName {
+					style : "-fx-alignment: CENTER",
+					text : "Name"
+				},
+				TableColumn id tbcCharacterHp {
+					style : "-fx-alignment: CENTER",
+					text : "HP"
+				},
+				TableColumn id tbcCharacterMp {
+					style : "-fx-alignment: CENTER",
+					text : "MP"
+				},
+				TableColumn id tbcCharacterAtk {
+					style : "-fx-alignment: CENTER",
+					text : "ATK"
+				},
+				TableColumn id tbcCharacterDef {
+					style : "-fx-alignment: CENTER",
+					text : "DEF"
+				}
+			]
+		}
+	}
+}

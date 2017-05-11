@@ -1,0 +1,18 @@
+.example-combobox-view{
+	
+}
+
+.example-combobox-view .header{
+	-fx-font-size: 20.0;
+	-fx-font-weight: bold;
+}
+
+.example-combobox-view .selectedCharacter{
+	-fx-text-fill: blue;
+}
+
+.example-combobox-view .selectionText{
+	-fx-font-size: 14;
+	-fx-font-style: italic;
+	-fx-text-fill: green;
+}

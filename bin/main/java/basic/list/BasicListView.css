@@ -1,0 +1,19 @@
+.basic-list-view {
+}
+
+.basic-list-view .header {
+	-fx-font-size: 20;
+	-fx-font-weight: bold;
+}
+
+.basic-list-view .amountOfNamesText {
+	-fx-font-size: 14;
+	-fx-font-style: italic;
+	-fx-text-fill: green;
+}
+
+.basic-list-view .amountOfNames {
+	-fx-font-size: 14;
+	-fx-font-weight: bold;
+}
+

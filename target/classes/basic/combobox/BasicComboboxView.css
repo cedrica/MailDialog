@@ -1,0 +1,9 @@
+.basic-combobox-view{
+	
+}
+
+.basic-combobox-view .selectionText{
+	-fx-font-size: 14;
+	-fx-font-style: italic;
+	-fx-text-fill: green;
+}

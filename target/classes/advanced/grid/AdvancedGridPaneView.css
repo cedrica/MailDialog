@@ -1,0 +1,13 @@
+.advanced-gridpane-view {
+}
+
+.advanced-gridpane-view .header {
+	-fx-font-size: 40;
+	-fx-font-weight: bold;
+}
+
+.advanced-gridpane-view .attribute {
+	-fx-font-size: 24;
+	-fx-font-weight: bold;
+}
+

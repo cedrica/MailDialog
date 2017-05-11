@@ -1,0 +1,153 @@
+package advanced.grid
+
+import javafx.scene.layout.BorderPane
+import advanced.combobox.AdvancedComboboxController
+import advanced.grid.AdvancedGridPaneView
+import advanced.grid.AdvancedGridPaneController
+import javafx.scene.layout.GridPane
+import javafx.scene.layout.RowConstraints
+import javafx.scene.layout.ColumnConstraints
+import javafx.scene.image.ImageView
+import javafx.scene.image.Image
+import javafx.scene.control.Label
+import java.lang.Double
+import javafx.geometry.Insets
+import javafx.scene.layout.HBox
+
+dynamic component AdvancedGridPaneView controlledby AdvancedGridPaneController styledwith [ "/css/Material.css",
+	"/advanced/grid/AdvancedGridPaneView.css" ] {
+	AdvancedGridPaneView id rootNode {
+		styleClass : [
+			"advanced-gridpane-view"
+		],
+		stylesheets : [
+			"/advanced/grid/AdvancedGridPaneView.css"
+		],
+		padding : Insets {
+			top : 20,
+			bottom : 20,
+			left : 20,
+			right : 20
+		},
+		center : GridPane id gpnMainGrid {
+			hgap : 10,
+			vgap : 20,
+			gridLinesVisible : true,
+			columnConstraints : [
+				ColumnConstraints {
+					hgrow : "NEVER"
+				},
+				ColumnConstraints {
+					hgrow : "SOMETIMES"
+				},
+				ColumnConstraints {
+					hgrow : "NEVER"
+				},
+				ColumnConstraints {
+					hgrow : "SOMETIMES"
+				}
+			],
+			rowConstraints : [
+				RowConstraints {
+					vgrow : "NEVER"
+				},
+				RowConstraints {
+					vgrow : "NEVER"
+				},
+				RowConstraints {
+					vgrow : "NEVER"
+				},
+				RowConstraints {
+					vgrow : "SOMETIMES"
+				}
+			],
+			Label {
+				static rowIndex : 0,
+				static columnIndex : 0,
+				static columnSpan : const GridPane#REMAINING,
+				styleClass : [
+					"header"
+				],
+				padding : Insets {
+					top : 10,
+					bottom : 10
+				},
+				maxWidth : const Double#MAX_VALUE,
+				alignment : "CENTER",
+				text : "Character Informations"
+			},
+			ImageView {
+				static rowIndex : 1,
+				static columnIndex : 0,
+				image : Image {
+					url : location "/images/attributes/HP.png"
+				}
+			},
+			Label {
+				static rowIndex : 1,
+				static columnIndex : 1,
+				styleClass : [
+					"attribute"
+				],
+				text : "100"
+			},
+			ImageView {
+				static rowIndex : 2,
+				static columnIndex : 0,
+				image : Image {
+					url : location "/images/attributes/Mana.png"
+				}
+			},
+			Label {
+				static rowIndex : 2,
+				static columnIndex : 1,
+				styleClass : [
+					"attribute"
+				],
+				text : "100"
+			},
+			ImageView {
+				static rowIndex : 1,
+				static columnIndex : 2,
+				image : Image {
+					url : location "/images/attributes/ATK.png"
+				}
+			},
+			Label {
+				static rowIndex : 1,
+				static columnIndex : 3,
+				styleClass : [
+					"attribute"
+				],
+				text : "100"
+			},
+			ImageView {
+				static rowIndex : 2,
+				static columnIndex : 2,
+				image : Image {
+					url : location "/images/attributes/DEF.png"
+				}
+			},
+			Label {
+				static rowIndex : 2,
+				static columnIndex : 3,
+				styleClass : [
+					"attribute"
+				],
+				text : "100"
+			},
+			HBox {
+				static rowIndex : 3,
+				static columnIndex : 0,
+				static columnSpan : const GridPane#REMAINING,
+				alignment : "CENTER",
+				ImageView {
+					image : Image {
+						url : location "/images/PILogoBig.png"
+					}
+				}
+
+			}
+		}
+	}
+}

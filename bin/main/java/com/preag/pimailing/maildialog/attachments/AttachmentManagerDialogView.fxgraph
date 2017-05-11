@@ -1,0 +1,9 @@
+package com.preag.pimailing.maildialog.attachments
+
+import javafx.scene.layout.VBox
+
+component AttachmentManagerDialogView {
+	VBox {
+		//TODO Add Nodes
+	}
+}
