@@ -1,0 +1,25 @@
+.mail-pre-view{
+	-fx-background-color:#fff;
+	/*-fx-opacity:0.4;*/
+	-fx-pref-width:800px
+}
+
+.mail-pre-view .title{
+	-fx-pref-width:100px;
+	-fx-text-fill:#444
+}
+.mail-pre-view .label{
+	-fx-text-fill:#444
+}
+
+.mail-pre-view .subject{
+	-fx-font-weight:bold;
+	-fx-font-size:18
+}
+
+.mail-pre-view .preview{
+	-fx-font-weight:bold;
+	-fx-font-size:20;
+	-fx-font-family:'Eras Medium ITC';
+	-fx-text-fill: darkorange;
+}

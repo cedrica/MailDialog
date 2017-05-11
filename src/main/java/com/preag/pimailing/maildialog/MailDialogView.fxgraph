@@ -1,0 +1,272 @@
+package com.preag.pimailing.maildialog
+
+import javafx.scene.layout.VBox
+import javafx.scene.layout.BorderPane
+import javafx.scene.layout.HBox
+import javafx.scene.control.Label
+import javafx.scene.control.ComboBox
+import javafx.scene.control.Button
+import javafx.scene.control.TextField
+import org.controlsfx.glyphfont.Glyph
+import java.lang.Double
+import org.controlsfx.control.ToggleSwitch
+import com.preag.core.ui.advancedhtmleditor.AdvancedHtmlEditor
+import javafx.geometry.Insets
+import com.preag.pimailing.maildialog.MailDialogController
+import javafx.scene.text.Font
+import com.preag.pimailing.maildialog.MailDialogView
+import com.preag.pimailing.maildialog.advancedtextfield.AdvancedTextFieldView
+import org.controlsfx.control.HiddenSidesPane
+import com.preag.pimailing.maildialog.previews.MailPreView
+import javafx.scene.control.ToggleButton
+import javafx.scene.control.Tooltip
+import javafx.scene.control.ScrollPane
+
+dynamic component MailDialogView controlledby MailDialogController styledwith [
+	"/com/preag/pimailing/maildialog/MailDialogView.css" ] {
+	MailDialogView id mailDialogView {
+		stylesheets : [
+			"/com/preag/pimailing/maildialog/MailDialogView.css"
+		],
+		styleClass : [
+			"mail-dialog-view"
+		],
+		HBox {
+			alignment : "CENTER_RIGHT",
+			Button id btnShowPreview {
+				style : "-fx-background-color:transparent",
+				graphic : Glyph {
+					style : "-fx-text-fill:darkorange",
+					icon : "BARS",
+					fontFamily : "FontAwesome"
+				},
+				tooltip : Tooltip {
+					text : "Show preview"
+				},
+				onAction : controllermethod onShowPreview
+			}
+		},
+		BorderPane {
+			maxWidth : const Double#MAX_VALUE,
+
+			top : HBox {
+				spacing : 30,
+				VBox id vbSendImage {
+					styleClass : [
+						"send-image"
+					],
+
+					VBox {
+						alignment : "CENTER",
+						static vgrow : "ALWAYS",
+						Label {
+							graphic : Glyph {
+								font : Font {
+									name : "size"
+								},
+								icon : "PAPER_PLANE",
+								fontFamily : "FontAwesome"
+							}
+						}
+					},
+
+					VBox {
+						alignment : "CENTER",
+						Label {
+							text : "SENDEN"
+						}
+					}
+				},
+				VBox {
+					static hgrow : "ALWAYS",
+					spacing : 5,
+					HBox {
+						spacing : 5,
+						Label {
+							styleClass : [
+								"title"
+							],
+							text : "Von:"
+						},
+						ComboBox id cboTransmitter {
+							static hgrow : "ALWAYS",
+							maxWidth : const Double#MAX_VALUE,
+							promptText : "E-Mail auswählen"
+						},
+						Label {
+							styleClass : [
+								"space-helper"
+							]
+						},
+						Label {
+							styleClass : [
+								"space-helper"
+							]
+						}
+					},
+					HBox {
+						spacing : 5,
+						Button {
+							styleClass : [
+								"title"
+							],
+							style : "-fx-background-color:silver;",
+							text : "An...",
+							onAction : controllermethod onShowRecieverDialog
+						},
+						AdvancedTextFieldView id atfvRecievers {
+							static hgrow : "ALWAYS",
+							maxWidth : const Double#MAX_VALUE,
+							disable : true
+						},
+						Label {
+							styleClass : [
+								"space-helper"
+							]
+						},
+						Label {
+							styleClass : [
+								"space-helper"
+							]
+						}
+					},
+					HBox {
+						spacing : 5,
+						Label {
+							styleClass : [
+								"title"
+							],
+							text : "Betreff:"
+						},
+						TextField id tfSubject {
+							static hgrow : "ALWAYS",
+							maxWidth : const Double#MAX_VALUE
+						},
+						Label {
+							styleClass : [
+								"space-helper"
+							]
+						},
+						Label {
+							styleClass : [
+								"space-helper"
+							]
+						}
+					},
+					HBox {
+						static vgrow : "ALWAYS",
+						spacing : 5,
+						Label {
+							styleClass : [
+								"title"
+							],
+							text : "Anhänge:"
+						},
+						HBox {
+							static hgrow : "ALWAYS",
+							AdvancedTextFieldView id atfvAttachments {
+								static hgrow : "ALWAYS"
+							}
+						},
+						HBox {
+							spacing : 5,
+							Button id btnAttachments{
+								styleClass : [
+									"space-helper"
+								],
+								style : "-fx-background-color:transparent;",
+								graphic : Glyph {
+									icon : "PAPERCLIP",
+									fontSize : 100,
+									fontFamily : "FontAwesome"
+								},
+								onAction : controllermethod onShowUploadAttachments
+							},
+							Button {
+								styleClass : [
+									"space-helper"
+								],
+
+								style : "-fx-background-color:transparent;",
+								text : "X",
+								onAction : controllermethod onShowAttachmentManager
+							}
+						}
+
+					},
+					HBox {
+						static vgrow : "ALWAYS",
+						Label {
+							styleClass : [
+								"title"
+							]
+						},
+						HBox {
+							static hgrow : "ALWAYS",
+							HBox {
+								static hgrow : "ALWAYS",
+								alignment : "TOP_LEFT",
+								Label {
+									text : "Persönliche Anrede"
+								},
+								ToggleSwitch id tsPersonalAddress {
+
+								}
+							},
+							VBox {
+								static hgrow : "ALWAYS",
+								alignment : "TOP_RIGHT",
+								ComboBox id cboSelectedTemplate {
+									promptText : "Vorlage auswählen"
+								}
+							}
+						},
+						Label {
+							styleClass : [
+								"space-helper"
+							]
+						},
+						Label {
+							styleClass : [
+								"space-helper"
+							]
+						}
+
+					}
+
+				}
+			},
+			center : VBox {
+				padding : Insets {
+					top : 20
+				},
+				AdvancedHtmlEditor id aheMessageBody {
+					static vgrow : "ALWAYS"
+				}
+			},
+			bottom : HBox {
+				padding : Insets {
+					top : 20
+				},
+				ComboBox id cboSignature {
+					promptText : "Signature auswählen"
+				},
+				HBox {
+					static hgrow : "ALWAYS",
+					spacing : 5,
+					alignment : "CENTER_RIGHT",
+					Button id btnSaveTemplate {
+						style : "-fx-background-color:transparent",
+						graphic : Glyph {
+							icon : "SAVE",
+							fontFamily : "FontAwesome"
+						},
+						text : "als Vorlage speichern"
+//						,
+//						onAction : controllermethod onSaveAsTemplate
+					}
+				}
+			}
+		}
+	}
+}

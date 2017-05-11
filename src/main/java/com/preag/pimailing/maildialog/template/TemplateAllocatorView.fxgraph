@@ -1,0 +1,27 @@
+package com.preag.pimailing.maildialog.template
+
+import javafx.scene.layout.VBox
+import javafx.scene.control.TextField
+import javafx.scene.layout.HBox
+import javafx.scene.control.Button
+import javafx.geometry.Insets
+import com.preag.pimailing.maildialog.template.TemplateAllocatorView
+import com.preag.pimailing.maildialog.template.TemplateAllocatorController
+
+dynamic component TemplateAllocatorView controlledby TemplateAllocatorController styledwith["/com/preag/pimailing/maildialog/template/TemplateAllocatorView.css"] {
+	TemplateAllocatorView id templateAllocatorView{
+		padding : Insets{
+			bottom : 10,
+			left : 10,
+			right : 10,
+			top : 10
+		},
+		minWidth : 400,
+		stylesheets : ["/com/preag/pimailing/maildialog/template/TemplateAllocatorView.css"],
+		styleClass : ["template-allocator-view"],
+		spacing : 5,
+		TextField id tfTemplateName{
+			promptText : "Geben Sie den Name des Template ein"
+		}
+	}
+}
