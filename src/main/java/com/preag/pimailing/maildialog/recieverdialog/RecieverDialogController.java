@@ -20,40 +20,45 @@ import javafx.scene.control.TextField;
 public class RecieverDialogController implements Initializable {
 
 	@FXML
-	RecieverDialogView recieverDialogView;
+	RecieverDialogView rootNode;
 	@FXML
 	TableView<User> tvRecievers;
 	@FXML
 	TextField tfLookForReciever;
 	private ObservableList<User> users;
-	@FXML TableColumn<User,String> tbcFirstName;
-	@FXML TableColumn<User,String> tbcLastName;
-	@FXML TableColumn<User,String> tbcEmail;
+	@FXML
+	TableColumn<User, String> tbcFirstName;
+	@FXML
+	TableColumn<User, String> tbcLastName;
+	@FXML
+	TableColumn<User, String> tbcEmail;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		tbcFirstName.setCellValueFactory(param -> param.getValue().vorNameProperty());
 		tbcLastName.setCellValueFactory(param -> param.getValue().nachNameProperty());
 		tbcEmail.setCellValueFactory(param -> param.getValue().emailProperty());
-		
-		recieverDialogView.recieverItemsProperty().addListener((obs, oldVal, newVal) -> {
-			if (newVal != null) {
-				users = retrieveUsers(newVal);
-				tvRecievers.setItems(users);
-			}
-		});
 
-		tfLookForReciever.setOnKeyReleased(evt -> {
-			String text = tfLookForReciever.getText();
-			if (users != null && !users.isEmpty()) {
-				List<User> collect = users.stream().filter(p -> {
-					return p.getNachName().startsWith(text) || p.getVorName().startsWith(text)
-							|| p.getEmail().startsWith(text);
-				}).collect(Collectors.toList());
-				tvRecievers.setItems(FXCollections.observableList(collect));
-			}
+		rootNode.recieverItemsProperty().addListener((obs, oldVal, newVal) -> updateReciverItemList(newVal));
 
-		});
+		tfLookForReciever.setOnKeyReleased(evt -> searchForReceiver(tfLookForReciever.getText()));
+	}
+
+	private void searchForReceiver(String searchText) {
+		if (users != null && !users.isEmpty()) {
+			List<User> collect = users.stream().filter(p -> {
+				return p.getNachName().startsWith(searchText) || p.getVorName().startsWith(searchText)
+						|| p.getEmail().startsWith(searchText);
+			}).collect(Collectors.toList());
+			tvRecievers.setItems(FXCollections.observableList(collect));
+		}
+	}
+
+	private void updateReciverItemList(ObservableList<Label> newVal) {
+		if (newVal != null) {
+			users = retrieveUsers(newVal);
+			tvRecievers.setItems(users);
+		}
 	}
 
 	private ObservableList<User> retrieveUsers(ObservableList<Label> usersLabel) {

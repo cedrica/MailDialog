@@ -47,6 +47,7 @@ F:\devspace\temp\JFXTutorial\src\main\java\todo\main\Main.java
 F:\devspace\temp\JFXTutorial\src\main\java\helper\entities\FXEntityConverter.java
 F:\devspace\temp\JFXTutorial\src\main\java\basic\textfield\BasicTextfieldController.java
 F:\devspace\temp\JFXTutorial\src\main\java\com\preag\pimailing\maildialog\advancedtextfield\AdvancedTextFieldController.java
+F:\devspace\temp\JFXTutorial\src\main\java\com\preag\pimailing\maildialog\MailDialogEvent.java
 F:\devspace\temp\JFXTutorial\src\main\java\advanced\grid\MainForAdvancedGridPaneView.java
 F:\devspace\temp\JFXTutorial\src\main\java\com\preag\pimailing\maildialog\converter\SignatureConverter.java
 F:\devspace\temp\JFXTutorial\src\main\java\com\preag\pimailing\maildialog\recieverdialog\RecieverDialogView.java
@@ -55,6 +56,7 @@ F:\devspace\temp\JFXTutorial\src\main\java\basic\button\BasicButtonView.java
 F:\devspace\temp\JFXTutorial\src\main\java\advanced\popover\MainForPopover.java
 F:\devspace\temp\JFXTutorial\src\main\java\basic\checkbox\MainForBasicCheckboxView.java
 F:\devspace\temp\JFXTutorial\src\main\java\basic\combobox\BasicComboboxView.java
+F:\devspace\temp\JFXTutorial\src\main\java\helper\PopOverProducer.java
 F:\devspace\temp\JFXTutorial\src\main\java\com\preag\pimailing\maildialog\run\Template.java
 F:\devspace\temp\JFXTutorial\src\main\java\com\preag\pimailing\maildialog\advancedtextfield\AdvancedTextFieldView.java
 F:\devspace\temp\JFXTutorial\src\main\java\com\preag\pimailing\maildialog\converter\TemplateConverter.java
@@ -68,5 +70,6 @@ F:\devspace\temp\JFXTutorial\src\main\java\advanced\table\AdvancedTableControlle
 F:\devspace\temp\JFXTutorial\src\main\java\helper\entities\FXRegion.java
 F:\devspace\temp\JFXTutorial\src\main\java\com\preag\pimailing\maildialog\MailDialogView.java
 F:\devspace\temp\JFXTutorial\src\main\java\helper\utils\CharacterObjectConverter.java
+F:\devspace\temp\JFXTutorial\src\main\java\com\preag\pimailing\maildialog\CellFactorySignature.java
 F:\devspace\temp\JFXTutorial\src\main\java\basic\componentskeleton\EmptyExampleView.java
 F:\devspace\temp\JFXTutorial\src\main\java\com\preag\pimailing\maildialog\template\TemplateAllocatorController.java

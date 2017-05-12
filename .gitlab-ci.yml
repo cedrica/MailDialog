@@ -1,0 +1,9 @@
+before_script:
+        - echo "Hello Human beeing, your building branch $CI_BUILD_REF_NAME ! Good work, i'll hope it will pass all obstacles of magic :)"
+        - mvn clean
+stages:
+    - verify
+Deploy:
+    stage: verify
+    script:
+        - mvn clean verify

@@ -1,5 +1,6 @@
 basic\componentskeleton\EmptyExampleEvent.class
 basic\datepicker\MainForBasicDatePickerView.class
+com\preag\pimailing\maildialog\CellFactorySignature$1.class
 todo\main\container\MainContainerController.class
 basic\button\BasicButtonView.class
 todo\main\container\MainContainerEvent.class
@@ -10,6 +11,7 @@ com\preag\pimailing\maildialog\MailDialogController.class
 com\preag\pimailing\maildialog\MailDialogView.class
 com\preag\pimailing\maildialog\template\TemplateAllocatorView.class
 basic\combobox\BasicComboboxView.class
+com\preag\pimailing\maildialog\MailDialogEvent.class
 helper\entities\FXEstate.class
 advanced\grid\MainForAdvancedGridPaneView.class
 com\preag\pimailing\maildialog\template\TemplateAllocatorController.class
@@ -19,6 +21,7 @@ helper\database\Database.class
 helper\utils\CharacterImageCellFactory$1.class
 basic\button\MainForBasicButtonView.class
 basic\componentskeleton\MainForEmptyExampleView.class
+helper\PopOverProducer.class
 basic\button\BasicButtonController.class
 com\preag\pimailing\maildialog\previews\MailPreViewController.class
 todo\MainManager.class
@@ -54,7 +57,7 @@ helper\utils\CharacterObjectConverter$3.class
 helper\entities\FXRegion.class
 com\preag\pimailing\maildialog\converter\SignatureConverter.class
 basic\list\MainForBasicListView.class
-com\preag\pimailing\maildialog\MailDialogController$1$1.class
+com\preag\pimailing\maildialog\CellFactorySignature$1$1.class
 helper\utils\CharacterImageCellFactory$TableCellCallback.class
 com\preag\pimailing\maildialog\MailDialogService$Adapter.class
 helper\utils\CharacterObjectConverter$2.class
@@ -66,8 +69,8 @@ advanced\combobox\AdvancedComboboxEvent.class
 basic\checkbox\MainForBasicCheckboxView.class
 helper\utils\CharacterNameCellFactory$TableCellCallback.class
 basic\textfield\BasicTextfieldController.class
+com\preag\pimailing\maildialog\CellFactorySignature.class
 advanced\dialog\MainForDialog.class
-com\preag\pimailing\maildialog\MailDialogController$1.class
 com\preag\pimailing\maildialog\advancedtextfield\AdvancedTextFieldView.class
 com\preag\pimailing\maildialog\converter\TemplateConverter.class
 helper\entities\FXEntityConverter.class

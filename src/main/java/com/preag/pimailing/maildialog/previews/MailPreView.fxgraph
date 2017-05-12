@@ -11,90 +11,122 @@ import javafx.scene.web.WebView
 import javafx.scene.control.Separator
 import java.lang.Double
 import javafx.scene.control.Button
+import javafx.scene.layout.GridPane
+import javafx.scene.layout.ColumnConstraints
+import javafx.scene.layout.BorderPane
 
 dynamic component MailPreView controlledby MailPreViewController styledwith [
 	"/com/preag/pimailing/maildialog/previews/MailPreView.css" ] {
-	MailPreView id mailPreView {
+	MailPreView id rootNode {
 		stylesheets : [
 			"/com/preag/pimailing/maildialog/previews/MailPreView.css"
 		],
 		styleClass : [
 			"mail-pre-view"
 		],
-		padding : Insets {
-			bottom : 10,
-			left : 10,
-			right : 10,
-			top : 10
-		},
-		spacing : 10,
-		HBox {
-			alignment : "CENTER",
-			Label {
-				styleClass : [
-				"preview"
-			],
-				text : "PREVIEW"
-			}
-		},
-		Separator{
-			orientation : "HORIZONTAL"
-		},
-		Label id lblSubject {
-			styleClass : [
-				"subject"
-			],
-			text : "Subject"
-		},
-		Label id lblTransmitter {
-			styleClass : [
-				"tilte"
-			],
-			text : "Vorname, Nachname"
-		},
-		HBox {
-			Label {
-				styleClass : [
-					"tilte"
-				],
-				text : "Gesendet:"
+		top : VBox {
+			padding : Insets {
+				top : 10,
+				bottom : 10
 			},
-			Label id lblTransmitDate {
-				text : ""
-			}
-		},
-		HBox {
-			spacing : 5,
 			Label {
-				static hgrow : "ALWAYS",
+				maxWidth : const Double#MAX_VALUE,
+				alignment : "CENTER",
+				text : "Preview",
 				styleClass : [
-					"title"
-				],
-				text : "An:"
+					"preview"
+				]
 			},
-			FlowPane id fpRecievers {
-				static hgrow : "ALWAYS",
-				hgap : 5
+			Separator {
+
 			}
 		},
-		HBox {
-			spacing : 5,
-			Label {
-				styleClass : [
-					"title"
+
+		center : BorderPane {
+			top : GridPane {
+				preview gridLinesVisible : true,
+				vgap : 5,
+				hgap : 5,
+				columnConstraints : [
+					ColumnConstraints {
+						hgrow : "NEVER"
+					},
+					ColumnConstraints {
+						hgrow : "ALWAYS"
+					}
 				],
-				text : "Anhänge"
+				Label {
+					static columnIndex : 0,
+					static rowIndex : 0,
+					text : "Betreff: ",
+					styleClass : [
+						"subheader"
+					]
+				},
+				Label id lblSubject {
+					static columnIndex : 1,
+					static rowIndex : 0,
+					text : "Subject",
+					styleClass : [
+						"subject"
+					]
+				},
+				Label {
+					static columnIndex : 0,
+					static rowIndex : 1,
+					text : "Senden als: ",
+					styleClass : [
+						"subheader"
+					]
+				},
+				Label id lblTransmitter {
+					static columnIndex : 1,
+					static rowIndex : 1,
+					text : "Vorname, Nachname",
+					styleClass : [
+						"tilte"
+					]
+				},
+				Label {
+					static columnIndex : 0,
+					static rowIndex : 2,
+					maxHeight : const Double#MAX_VALUE,
+					alignment : "TOP_LEFT",
+					text : "Senden an: ",
+					styleClass : [
+						"subheader"
+					]
+				},
+				FlowPane id fpRecievers {
+					static columnIndex : 1,
+					static rowIndex : 2
+				},
+				Label {
+					maxHeight : const Double#MAX_VALUE,
+					alignment : "TOP_LEFT",
+					static columnIndex : 0,
+					static rowIndex : 3,
+					text : "Anhang: ",
+					styleClass : [
+						"subheader"
+					]
+				},
+				FlowPane id fpAttachments {
+					static columnIndex : 1,
+					static rowIndex : 3
+				}
 			},
-			FlowPane id fpAttachments {
-				static hgrow : "ALWAYS",
-				hgap : 5
+			center : VBox {
+				padding : Insets {
+					top : 20
+				},
+				Label id lblPersonalAddress {
+					text : "Sehr geehrte Damen und Herren;"
+				},
+				WebView id aheBody {
+					static vgrow : "ALWAYS"
+				}
 			}
-		},
-		Label id lblPersonalAddress {
-			text : "Sehr geehrte Damen und Herren;"
-		},
-		WebView id aheBody {
-			static vgrow : "ALWAYS"
 		}
 	}
 }

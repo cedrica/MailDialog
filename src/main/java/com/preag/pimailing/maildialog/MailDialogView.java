@@ -16,13 +16,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.BorderPane;
 
-public class MailDialogView extends VBox {
+public class MailDialogView extends BorderPane {
 	private ObjectProperty<String> selectedTransmitter = new SimpleObjectProperty<>();
 	private ListProperty<String> transmitterItems = new SimpleListProperty<>(
 			FXCollections.observableList(new ArrayList<>()));
@@ -35,9 +33,9 @@ public class MailDialogView extends VBox {
 	private ListProperty<Template> templateItems = new SimpleListProperty<>();
 	private StringProperty messagebody = new SimpleStringProperty();
 	private ObjectProperty<Signature> signature = new SimpleObjectProperty<>();
-	private ObjectProperty<EventHandler<MouseEvent>> onSendEmail = new SimpleObjectProperty<>();
 	private ListProperty<Signature> signatureItems = new SimpleListProperty<>();
-	private ObjectProperty<EventHandler<ActionEvent>> onSaveTemplate = new SimpleObjectProperty<>();
+
+	private ObjectProperty<Button> previewButton = new SimpleObjectProperty<>();
 
 	public MailDialogView() {
 		super();
@@ -164,30 +162,6 @@ public class MailDialogView extends VBox {
 		this.signatureItemsProperty().set(signatureItems);
 	}
 
-	public final ObjectProperty<EventHandler<MouseEvent>> onSendEmailProperty() {
-		return this.onSendEmail;
-	}
-
-	public final EventHandler<MouseEvent> getOnSendEmail() {
-		return this.onSendEmailProperty().get();
-	}
-
-	public final void setOnSendEmail(final EventHandler<MouseEvent> onSenEmail) {
-		this.onSendEmailProperty().set(onSenEmail);
-	}
-
-	public final ObjectProperty<EventHandler<ActionEvent>> onSaveTemplateProperty() {
-		return this.onSaveTemplate;
-	}
-
-	public final EventHandler<ActionEvent> getOnSaveTemplate() {
-		return this.onSaveTemplateProperty().get();
-	}
-
-	public final void setOnSaveTemplate(final EventHandler<ActionEvent> onSaveTemplate) {
-		this.onSaveTemplateProperty().set(onSaveTemplate);
-	}
-
 	public final ListProperty<Template> templateItemsProperty() {
 		return this.templateItems;
 	}
@@ -200,4 +174,15 @@ public class MailDialogView extends VBox {
 		this.templateItemsProperty().set(templateItems);
 	}
 
+	public final ObjectProperty<Button> previewButtonProperty() {
+		return this.previewButton;
+	}
+
+	public final Button getPreviewButton() {
+		return this.previewButtonProperty().get();
+	}
+
+	public final void setPreviewButton(final Button previewButton) {
+		this.previewButtonProperty().set(previewButton);
+	}
 }

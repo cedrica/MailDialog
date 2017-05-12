@@ -11,27 +11,33 @@ import com.preag.pimailing.maildialog.advancedtextfield.AdvancedTextFieldView
 import javafx.geometry.Insets
 import javafx.scene.control.TableColumn
 import org.controlsfx.glyphfont.Glyph
+import javafx.scene.control.Label
 dynamic component RecieverDialogView controlledby RecieverDialogController styledwith [
 	"/com/preag/pimailing/maildialog/recieverdialog/RecieverDialogView.css" ] {
-	RecieverDialogView id recieverDialogView {
+	RecieverDialogView id rootNode {
 		stylesheets : [
 			"/com/preag/pimailing/maildialog/recieverdialog/RecieverDialogView.css"
 		],
 		styleClass : [
 			"to-dialog-view"
 		],
-		padding : Insets {
-			bottom : 10,
-			left : 10,
-			right : 10,
-			top : 10
+		top : HBox {
+			spacing : 5,
+			padding : Insets {
+				bottom  : 10
+			},
+			Label{
+				maxHeight : const Double#MAX_VALUE,
+				textAlignment : "CENTER",
+				text : "Email: "
+			},
+			TextField id tfLookForReciever {
+				static hgrow : "ALWAYS",
+				promptText : "Suchen..."
+			}
 		},
-		spacing : 5,
-		TextField id tfLookForReciever {
-			promptText : "Suchen..."
-		},
-		TableView id tvRecievers{
-			static vgrow : "ALWAYS",
+		center : TableView id tvRecievers {
+			columnResizePolicy : const TableView#CONSTRAINED_RESIZE_POLICY,
 			columns : [
 				TableColumn id tbcFirstName {
 					text : "Vorname",

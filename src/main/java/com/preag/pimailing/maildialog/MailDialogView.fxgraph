@@ -21,22 +21,22 @@ import com.preag.pimailing.maildialog.previews.MailPreView
 import javafx.scene.control.ToggleButton
 import javafx.scene.control.Tooltip
 import javafx.scene.control.ScrollPane
+import javafx.scene.layout.GridPane
+import javafx.scene.layout.ColumnConstraints
 
 dynamic component MailDialogView controlledby MailDialogController styledwith [
 	"/com/preag/pimailing/maildialog/MailDialogView.css" ] {
-	MailDialogView id mailDialogView {
+	MailDialogView id rootNode {
 		stylesheets : [
 			"/com/preag/pimailing/maildialog/MailDialogView.css"
 		],
 		styleClass : [
 			"mail-dialog-view"
 		],
-		HBox {
+		top : HBox {
 			alignment : "CENTER_RIGHT",
 			Button id btnShowPreview {
-				style : "-fx-background-color:transparent",
 				graphic : Glyph {
-					style : "-fx-text-fill:darkorange",
 					icon : "BARS",
 					fontFamily : "FontAwesome"
 				},
@@ -46,194 +46,125 @@ dynamic component MailDialogView controlledby MailDialogController styledwith [
 				onAction : controllermethod onShowPreview
 			}
 		},
-		BorderPane {
+		center : BorderPane {
 			maxWidth : const Double#MAX_VALUE,
 
 			top : HBox {
-				spacing : 30,
-				VBox id vbSendImage {
-					styleClass : [
-						"send-image"
-					],
-
-					VBox {
-						alignment : "CENTER",
-						static vgrow : "ALWAYS",
-						Label {
-							graphic : Glyph {
-								font : Font {
-									name : "size"
-								},
-								icon : "PAPER_PLANE",
-								fontFamily : "FontAwesome"
-							}
-						}
+				alignment : "CENTER_LEFT",
+				Button {
+					prefHeight : 100,
+					prefWidth : 100,
+					contentDisplay : "TOP",
+					graphic : Glyph {
+						icon : "PAPER_PLANE",
+						fontFamily : "FontAwesome",
+						fontSize : 40
 					},
-
-					VBox {
-						alignment : "CENTER",
-						Label {
-							text : "SENDEN"
-						}
-					}
+					text : "Senden"
 				},
-				VBox {
+				spacing : 30,
+				GridPane {
 					static hgrow : "ALWAYS",
-					spacing : 5,
-					HBox {
-						spacing : 5,
-						Label {
-							styleClass : [
-								"title"
-							],
-							text : "Von:"
+					preview gridLinesVisible : true,
+					vgap : 5,
+					hgap : 5,
+					columnConstraints : [
+						ColumnConstraints {
+							hgrow : "NEVER",
+							minWidth : 100
 						},
-						ComboBox id cboTransmitter {
-							static hgrow : "ALWAYS",
-							maxWidth : const Double#MAX_VALUE,
-							promptText : "E-Mail auswählen"
+						ColumnConstraints {
+							hgrow : "ALWAYS"
 						},
-						Label {
-							styleClass : [
-								"space-helper"
-							]
-						},
-						Label {
-							styleClass : [
-								"space-helper"
-							]
+						ColumnConstraints {
+							hgrow : "NEVER"
 						}
+					],
+					Label {
+						static columnIndex : 0,
+						static rowIndex : 0,
+						text : "Von:"
+					},
+					ComboBox id cboTransmitter {
+						static columnIndex : 1,
+						static rowIndex : 0,
+						static hgrow : "ALWAYS",
+						maxWidth : const Double#MAX_VALUE,
+						promptText : "E-Mail auswählen"
+					},
+					Button {
+						static columnIndex : 0,
+						static rowIndex : 1,
+						maxWidth : const Double#MAX_VALUE,
+						text : "An...",
+						onAction : controllermethod onShowRecieverDialog
+					},
+					AdvancedTextFieldView id atfvRecievers {
+						static columnIndex : 1,
+						static rowIndex : 1,
+						maxWidth : const Double#MAX_VALUE,
+						disable : true
+					},
+					Label {
+						static columnIndex : 0,
+						static rowIndex : 2,
+						text : "Betreff:"
+					},
+					TextField id tfSubject {
+						static columnIndex : 1,
+						static rowIndex : 2,
+						maxWidth : const Double#MAX_VALUE
+					},
+					Label {
+						static columnIndex : 0,
+						static rowIndex : 3,
+						text : "Anhänge:"
+					},
+					AdvancedTextFieldView id atfvAttachments {
+						static columnIndex : 1,
+						static rowIndex : 3,
+						static hgrow : "ALWAYS"
 					},
 					HBox {
+						static columnIndex : 2,
+						static rowIndex : 3,
 						spacing : 5,
 						Button {
-							styleClass : [
-								"title"
-							],
-							style : "-fx-background-color:silver;",
-							text : "An...",
-							onAction : controllermethod onShowRecieverDialog
+							graphic : Glyph {
+								icon : "PAPERCLIP",
+								fontFamily : "FontAwesome"
+							},
+							onAction : controllermethod onShowUploadAttachments
 						},
-						AdvancedTextFieldView id atfvRecievers {
-							static hgrow : "ALWAYS",
+						Button {
+							graphic : Glyph {
+								icon : "TRASH",
+								fontFamily : "FontAwesome"
+							},
+							onAction : controllermethod onShowAttachmentManager
+						}
+					},
+					HBox {
+						static columnIndex : 1,
+						static rowIndex : 4,
+						spacing : 10,
+						alignment : "CENTER_LEFT",
+						Label {
+							text : "Persönliche Anrede"
+						},
+						VBox {
+							alignment : "CENTER",
+							ToggleSwitch id tsPersonalAddress {
+							}
+						},
+						Label {
 							maxWidth : const Double#MAX_VALUE,
-							disable : true
+							static hgrow : "ALWAYS"
 						},
-						Label {
-							styleClass : [
-								"space-helper"
-							]
-						},
-						Label {
-							styleClass : [
-								"space-helper"
-							]
+						ComboBox id cboSelectedTemplate {
+							promptText : "Vorlage auswählen"
 						}
-					},
-					HBox {
-						spacing : 5,
-						Label {
-							styleClass : [
-								"title"
-							],
-							text : "Betreff:"
-						},
-						TextField id tfSubject {
-							static hgrow : "ALWAYS",
-							maxWidth : const Double#MAX_VALUE
-						},
-						Label {
-							styleClass : [
-								"space-helper"
-							]
-						},
-						Label {
-							styleClass : [
-								"space-helper"
-							]
-						}
-					},
-					HBox {
-						static vgrow : "ALWAYS",
-						spacing : 5,
-						Label {
-							styleClass : [
-								"title"
-							],
-							text : "Anhänge:"
-						},
-						HBox {
-							static hgrow : "ALWAYS",
-							AdvancedTextFieldView id atfvAttachments {
-								static hgrow : "ALWAYS"
-							}
-						},
-						HBox {
-							spacing : 5,
-							Button id btnAttachments{
-								styleClass : [
-									"space-helper"
-								],
-								style : "-fx-background-color:transparent;",
-								graphic : Glyph {
-									icon : "PAPERCLIP",
-									fontSize : 100,
-									fontFamily : "FontAwesome"
-								},
-								onAction : controllermethod onShowUploadAttachments
-							},
-							Button {
-								styleClass : [
-									"space-helper"
-								],
-
-								style : "-fx-background-color:transparent;",
-								text : "X",
-								onAction : controllermethod onShowAttachmentManager
-							}
-						}
-
-					},
-					HBox {
-						static vgrow : "ALWAYS",
-						Label {
-							styleClass : [
-								"title"
-							]
-						},
-						HBox {
-							static hgrow : "ALWAYS",
-							HBox {
-								static hgrow : "ALWAYS",
-								alignment : "TOP_LEFT",
-								Label {
-									text : "Persönliche Anrede"
-								},
-								ToggleSwitch id tsPersonalAddress {
-
-								}
-							},
-							VBox {
-								static hgrow : "ALWAYS",
-								alignment : "TOP_RIGHT",
-								ComboBox id cboSelectedTemplate {
-									promptText : "Vorlage auswählen"
-								}
-							}
-						},
-						Label {
-							styleClass : [
-								"space-helper"
-							]
-						},
-						Label {
-							styleClass : [
-								"space-helper"
-							]
-						}
-
 					}
-
 				}
 			},
 			center : VBox {
@@ -251,20 +182,18 @@ dynamic component MailDialogView controlledby MailDialogController styledwith [
 				ComboBox id cboSignature {
 					promptText : "Signature auswählen"
 				},
-				HBox {
-					static hgrow : "ALWAYS",
-					spacing : 5,
-					alignment : "CENTER_RIGHT",
-					Button id btnSaveTemplate {
-						style : "-fx-background-color:transparent",
-						graphic : Glyph {
-							icon : "SAVE",
-							fontFamily : "FontAwesome"
-						},
-						text : "als Vorlage speichern"
-//						,
-//						onAction : controllermethod onSaveAsTemplate
-					}
+				Label {
+					maxWidth : const Double#MAX_VALUE,
+					static hgrow : "ALWAYS"
+				},
+				Button id btnSaveTemplate {
+					graphic : Glyph {
+						icon : "SAVE",
+						fontFamily : "FontAwesome"
+					},
+					text : "als Vorlage speichern",
+					onAction : controllermethod onSaveAsTemplate
+
 				}
 			}
 		}

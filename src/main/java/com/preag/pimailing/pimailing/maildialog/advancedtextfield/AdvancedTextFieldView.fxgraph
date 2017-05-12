@@ -1,0 +1,25 @@
+package com.preag.pimailing.maildialog.advancedtextfield
+
+import javafx.scene.layout.VBox
+import javafx.scene.layout.FlowPane
+import javafx.scene.control.Label
+import javafx.scene.layout.HBox
+import com.preag.pimailing.maildialog.advancedtextfield.AdvancedTextFieldController
+import com.preag.pimailing.maildialog.advancedtextfield.AdvancedTextFieldView
+
+dynamic component AdvancedTextFieldView controlledby AdvancedTextFieldController styledwith [ "/com/preag/pimailing/maildialog/advancedtextfield/AdvancedTextField.css" ] {
+	AdvancedTextFieldView id advancedTextFieldView{
+		stylesheets : [
+			"/com/preag/pimailing/maildialog/advancedtextfield/AdvancedTextField.css"
+		],
+		styleClass : [
+			"advanced-text-field"
+		],
+		FlowPane id fpLabelContainer{
+			hgap : 5,
+			static hgrow : "ALWAYS",
+			style : "-fx-background-color:#fff;"
+		}
+	}
+
+}

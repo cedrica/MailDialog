@@ -19,7 +19,12 @@
 
 .mail-pre-view .preview{
 	-fx-font-weight:bold;
-	-fx-font-size:20;
+	-fx-font-size:24;
 	-fx-font-family:'Eras Medium ITC';
 	-fx-text-fill: darkorange;
+}
+
+.mail-pre-view .subheader{
+	-fx-font-weight:bold;
+	-fx-font-size:12;
 }

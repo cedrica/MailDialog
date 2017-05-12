@@ -31,30 +31,31 @@ public class AdvancedTextFieldController implements Initializable {
 	}
 
 	private void registerListener() {
-		advancedTextFieldView.itemsProperty().addListener((obs, oldVal, newVal) -> {
-			if (newVal == null) {
-				fpLabelContainer.getChildren().clear();
-			} else {
-				for (Label item : newVal) {
-					if (!contains(item, fpLabelContainer.getChildren())) {
-						addRecieverAndRegisterAction(item);
-					}
+		advancedTextFieldView.itemsProperty().addListener((obs, oldVal, newVal) -> updateItemList(newVal));
+		advancedTextFieldView.itemProperty().addListener((obs, oldVal, newVal) -> updateItem(newVal));
+	}
+
+	private void updateItem(Label newVal) {
+		if (newVal == null) {
+			fpLabelContainer.getChildren().clear();
+		} else {
+			if (!contains(newVal, fpLabelContainer.getChildren())) {
+				addRecieverAndRegisterAction(newVal);
+				advancedTextFieldView.getItems().add(newVal);
+			}
+		}
+	}
+
+	private void updateItemList(ObservableList<Label> newVal) {
+		if (newVal == null) {
+			fpLabelContainer.getChildren().clear();
+		} else {
+			for (Label item : newVal) {
+				if (!contains(item, fpLabelContainer.getChildren())) {
+					addRecieverAndRegisterAction(item);
 				}
 			}
-
-		});
-
-		advancedTextFieldView.itemProperty().addListener((obs, oldVal, newVal) -> {
-			if (newVal == null) {
-				fpLabelContainer.getChildren().clear();
-			} else {
-				if (!contains(newVal, fpLabelContainer.getChildren())) {
-					addRecieverAndRegisterAction(newVal);
-					advancedTextFieldView.getItems().add(newVal);
-				}
-			}
-
-		});
+		}
 	}
 
 	private void addRecieverAndRegisterAction(Label newVal) {

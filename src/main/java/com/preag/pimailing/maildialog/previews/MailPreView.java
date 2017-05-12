@@ -1,6 +1,5 @@
 package com.preag.pimailing.maildialog.previews;
 
-
 import com.preag.core.ui.service.FXMLService;
 import com.preag.pimailing.maildialog.run.Signature;
 
@@ -11,10 +10,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.BorderPane;
 
-public class MailPreView extends VBox {
+public class MailPreView extends BorderPane {
 
 	private StringProperty subject = new SimpleStringProperty();
 	private StringProperty transmitter = new SimpleStringProperty();
@@ -24,9 +22,7 @@ public class MailPreView extends VBox {
 	private StringProperty personalAdress = new SimpleStringProperty();
 	private StringProperty messageBody = new SimpleStringProperty();
 	private ObjectProperty<Signature> signature = new SimpleObjectProperty<>();
-	private ObjectProperty<Boolean> editable = new SimpleObjectProperty<>();
-	private ObjectProperty<Label> removedAttachment = new SimpleObjectProperty<>();
-	
+
 	public MailPreView() {
 		FXMLService.INSTANCE.loadView(this);
 	}
@@ -126,34 +122,4 @@ public class MailPreView extends VBox {
 	public final void setAttachments(final ObservableList<String> attachments) {
 		this.attachmentsProperty().set(attachments);
 	}
-
-	public final ObjectProperty<Boolean> editableProperty() {
-		return this.editable;
-	}
-	
-
-	public final boolean isEditable() {
-		return this.editableProperty().get();
-	}
-	
-
-	public final void setEditable(final boolean editable) {
-		this.editableProperty().set(editable);
-	}
-
-	public final ObjectProperty<Label> removedAttachmentProperty() {
-		return this.removedAttachment;
-	}
-	
-
-	public final Label getRemovedAttachment() {
-		return this.removedAttachmentProperty().get();
-	}
-	
-
-	public final void setRemovedAttachment(final Label removedAttachment) {
-		this.removedAttachmentProperty().set(removedAttachment);
-	}
-
-	
 }
